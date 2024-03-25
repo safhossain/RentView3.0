@@ -1,0 +1,111 @@
+<%@page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page import="java.util.List"%>
+<%@page import="com.ryerson.rentviewfrontendservice.Business.MovieManagement"%>
+<%@page import="com.ryerson.rentviewfrontendservice.Business.RentalManager"%>
+<%@page import="com.ryerson.rentviewfrontendservice.Business.MemberManager"%>
+<%@page import="com.ryerson.rentviewfrontendservice.Business.MemberManager"%>
+<%@page import="com.ryerson.rentviewfrontendservice.Helper.MemberInfo"%>
+<%@page import="com.ryerson.rentviewfrontendservice.Helper.ReviewInfo"%>
+<%@page import="com.ryerson.rentviewfrontendservice.Helper.MovieInfo"%>
+<%@page import="com.ryerson.rentviewfrontendservice.Helper.RentalInfo"%>
+<%@page import="javax.servlet.http.Cookie"%>
+
+<%
+    boolean isAuthenticated = false;
+    MemberInfo memberInfo = null;
+    Cookie[] cookies = request.getCookies();
+    if (cookies != null) {
+        for (Cookie cookie : cookies) {
+            if ("login_token".equals(cookie.getName())) {
+                // Assuming you have a method in MemberManager to verify the token and get MemberInfo
+                memberInfo = MemberManager.verifyTokenAndGetMemberInfo(cookie.getValue());
+                if (memberInfo != null) {
+                    isAuthenticated = true;
+                    break;
+                }
+            }
+        }
+    }
+%>
+
+<html>
+    <head>
+        <title>Movie Details</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <form action="index.jsp">
+                        <button type="submit">Home</button>
+                </form>
+                <% 
+                    if (isAuthenticated) {
+                %>
+                    <span>Welcome, <%= memberInfo.getFirstName() %></span>
+                    <form action="logout.jsp">
+                        <button type="submit">Logout</button>
+                    </form>
+                    <% if (memberInfo.getMemberType().equals("manager")){ %>
+                        <form action="MovieManagementServlet" method="GET">
+                            <button type="submit">MANAGER TOOLS</button>
+                        </form>
+                    <% } %>
+                <% } else { %>
+                    <form action="login.jsp">
+                        <button type="submit">Login</button>
+                    </form>
+                <% } %>
+            </nav>
+        </header>
+        <% 
+            int movieID = Integer.parseInt(request.getParameter("movieID"));
+            MovieInfo movie = MovieManagement.readMovie(movieID);            
+                       
+            if (movie != null) {
+        %>
+            <h1><%= movie.getMovieName() %></h1>
+            <img src="<%= request.getContextPath() + movie.getMovieImagePath() %>" alt="<%= movie.getMovieName() %>" width="270" height="400">
+            <p>Release Year: <%= movie.getReleaseYear() %></p>
+            <p>Rental Cost: $<%= movie.getRentalCost() %></p>
+            
+            <% if (session.getAttribute("rentalStatus") != null && session.getAttribute("rentalStatus").equals("Success")) { %>
+                <p style="color: green;">Rental successful!</p>
+                <% session.removeAttribute("rentalStatus"); %>
+            <% } %>
+
+            <% if (isAuthenticated) {                
+                RentalManager rentalManager = new RentalManager();
+                boolean hasRented = rentalManager.authenticateRentalByMemberID(memberInfo.getMemberID(), movie.getMovieID());
+                if (hasRented) {
+            %>
+                <button>Watch Now</button>
+            <% } else { %>
+                <form action="RentMovieServlet" method="post">
+                    <input type="hidden" name="movieID" value="<%= movie.getMovieID() %>">
+                    <button type="submit">Rent Now</button>
+                </form>
+            <% }
+            } else { %>
+                <a href="login.jsp?redirect=movie.jsp&movieID=<%= movie.getMovieID() %>"><button>Rent Now</button></a>
+            <% } %>
+            
+        <% 
+            } else {
+        %>
+            <p>Movie not found.</p>
+        <% 
+            }
+        %>        
+        
+        <footer>
+            <nav>
+                <button onclick="window.scrollTo(0, 0);">scroll to top</button>
+                <a href="#terms">Terms & conditions</a>
+                <a href="#about">About us</a>
+                <a href="#support">Support</a>
+            </nav>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+-- *************** TABLE CREATION *****************
+-- Optimal creation order: DIRECTOR, GENRE, MOVIE, MOVIE_DIRECTOR, MOVIE_GENRE
+-- *************************************************
+CREATE DATABASE SEARCHSERVICE_DB;
+USE SEARCHSERVICE_DB;
+
+CREATE TABLE DIRECTOR (
+	director_ID INT PRIMARY KEY AUTO_INCREMENT,
+	first_name VARCHAR(50) NOT NULL,
+	last_name VARCHAR(50) NOT NULL
+);
+CREATE TABLE GENRE (
+	genre_ID INT PRIMARY KEY AUTO_INCREMENT,
+	genre_type VARCHAR(50) NOT NULL
+);
+CREATE TABLE MOVIE (
+	movie_ID INT PRIMARY KEY AUTO_INCREMENT,
+	movie_name VARCHAR(255) NOT NULL,
+	release_year YEAR NOT NULL,
+	rental_cost DECIMAL(10, 2) NOT NULL,
+        movie_image_path VARCHAR(255),
+        is_movie_featured BOOLEAN DEFAULT FALSE
+);
+CREATE TABLE MOVIE_DIRECTOR (
+	movie_ID INT AUTO_INCREMENT,
+	director_ID INT,
+	PRIMARY KEY (movie_ID, director_ID),
+	FOREIGN KEY (movie_ID) REFERENCES MOVIE(movie_ID),
+	FOREIGN KEY (director_ID) REFERENCES DIRECTOR(director_ID)
+);
+CREATE TABLE MOVIE_GENRE (
+	movie_ID INT,
+	genre_ID INT,
+	PRIMARY KEY (movie_ID, genre_ID),
+	FOREIGN KEY (movie_ID) REFERENCES MOVIE(movie_ID),
+	FOREIGN KEY (genre_ID) REFERENCES GENRE(genre_ID)
+);
