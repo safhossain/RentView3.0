@@ -1,6 +1,6 @@
 -- *************** DATA INSERTION *****************
 -- Optimal insertion order: MEMBER, DIRECTOR, GENRE, MOVIE,
--- ... MOVIE_DIRECTOR, MOVIE_GENRE, REVIEW, RENTAL, PAYMENT
+-- ... MOVIE_DIRECTOR, MOVIE_GENRE, RENTAL, PAYMENT
 -- *************************************************
 
 USE RENTVIEWFRONTENDSERVICE;
@@ -11,9 +11,8 @@ INSERT INTO MEMBER (email_address, hashed_password, first_name, last_name, date_
     ('BobJohn@example.com', '531142f', 'Bob', 'John', '1985-01-30', 'user', '5678', 'MasterCard', '2024-11-30'),
     ('CBrown@example.com', 'dcbca3ba', 'Chris', 'Brown', '1989-05-05', 'user', '9012', 'Amex', '2023-09-15'),
     ('D1Wilson@example.com', 'f0772152', 'Derek', 'Wilson', '1992-08-24', 'user', NULL, NULL, NULL),
-    ('ethan69@example.com', '97319cf0', 'Ethan', 'Smith', '2000-03-12', 'user', NULL, NULL, NULL),
-    ('NEWMEMBER@gmail.com', 'e4cd5ab8', 'NEW', 'MEMBER', '1998-10-22', 'user');
-
+    ('ethan69@example.com', '97319cf0', 'Ethan', 'Smith', '2000-03-12', 'user', NULL, NULL, NULL);
+    
 INSERT INTO DIRECTOR (first_name, last_name) VALUES
     ('Peter', 'Jackson'),
     ('Chris', 'Columbus'),

@@ -1,6 +1,6 @@
 -- *************** TABLE CREATION *****************
 -- Optimal creation order: MEMBER, DIRECTOR, GENRE, MOVIE,
--- ... MOVIE_DIRECTOR, MOVIE_GENRE, REVIEW, RENTAL, PAYMENT
+-- ... MOVIE_DIRECTOR, MOVIE_GENRE, RENTAL, PAYMENT
 -- *************************************************
 
 -- If needed, creating the DB and using:
