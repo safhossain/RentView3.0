@@ -19,11 +19,10 @@ import java.io.StringWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@Path("reviews")
+@Path("reviews/{movieID}")
 public class ReviewsResource 
 {
-    @GET
-    @Path("{movieID}")
+    @GET    
     @Produces(MediaType.APPLICATION_XML)
     public String getReviewsByMovieID(@PathParam("movieID") int movieID) {
         ReviewsXML reviews = ReviewManager.getReviewsByMovieID(movieID);
