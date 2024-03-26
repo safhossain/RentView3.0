@@ -1,7 +1,7 @@
 com/ryerson/rentviewreviewservice/Persistence/Base_CRUD.class
 com/ryerson/rentviewreviewservice/Persistence/Review_CRUD.class
-com/ryerson/rentviewreviewservice/endpoint/ReviewsResource.class
+com/ryerson/rentviewreviewservice/Endpoint/ApplicationConfig.class
+com/ryerson/rentviewreviewservice/Endpoint/ReviewResource.class
 com/ryerson/rentviewreviewservice/Helper/ReviewsXML.class
-com/ryerson/rentviewreviewservice/endpoint/ApplicationConfig.class
 com/ryerson/rentviewreviewservice/Helper/ReviewInfo.class
 com/ryerson/rentviewreviewservice/Business/ReviewManager.class

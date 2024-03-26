@@ -1,9 +1,10 @@
--- *************** TABLE CREATION *****************
--- Optimal creation order: MEMBER, DIRECTOR, GENRE, MOVIE,
--- ... MOVIE_DIRECTOR, MOVIE_GENRE, REVIEW, RENTAL, PAYMENT
--- *************************************************
+-- *************** DATABASE + TABLE CREATION *****************
+-- Optimal creation order: Database, MEMBER, MOVIE, REVIEW
+-- ***********************************************************
 
-CREATE DATABASE RENTVIEWREVIEWSERVICE;
+-- IF NEEDED:
+-- CREATE DATABASE RENTVIEWREVIEWSERVICE;
+
 USE RENTVIEWREVIEWSERVICE;
 
 CREATE TABLE MEMBER (

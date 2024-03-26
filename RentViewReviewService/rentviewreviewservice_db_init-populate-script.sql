@@ -29,4 +29,5 @@ INSERT INTO REVIEW (review_description, rating, member_ID, movie_ID) VALUES
     ('Loved it!', 4, 4, 2),
     ('Very entertaining', 4, 5, 3),
     ('A classic', 5, 6, 4),
-    ('Heartwarming story', 5, 7, 5);
+    ('Heartwarming story', 4, 7, 5),
+    ('I like turtles', 5, 4, 5);

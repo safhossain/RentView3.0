@@ -1,5 +1,9 @@
 package com.ryerson.rentviewreviewservice.Helper;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Objects;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -25,8 +29,7 @@ public class ReviewInfo
         this.reviewText = reviewText;
         this.rating = rating;
     }
-
-    // Getters and setters
+    
     public int getReviewID() {
         return reviewID;
     }

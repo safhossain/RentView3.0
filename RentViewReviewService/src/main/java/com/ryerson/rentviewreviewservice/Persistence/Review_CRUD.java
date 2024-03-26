@@ -27,12 +27,12 @@ public class Review_CRUD extends Base_CRUD{
         }
     }
     
-    public static List<ReviewInfo> getAllReviews() {
-        List<ReviewInfo> reviews = new ArrayList<>();
+    public static ArrayList<ReviewInfo> getAllReviews() {
+        ArrayList<ReviewInfo> reviews = new ArrayList<>();
         Connection con = getCon();
         try {
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM MOVIE");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM REVIEW");
             while (rs.next()) {
                 reviews.add(new ReviewInfo(
                     rs.getInt("review_ID"),
@@ -49,8 +49,8 @@ public class Review_CRUD extends Base_CRUD{
         return reviews;
     }
     
-    public static List<ReviewInfo> getReviewsByMovieID(int movieID) {
-        List<ReviewInfo> reviews = new ArrayList<>();
+    public static ArrayList<ReviewInfo> getReviewsByMovieID(int movieID) {
+        ArrayList<ReviewInfo> reviews = new ArrayList<>();
         Connection con = getCon();
         try {
             PreparedStatement pstmt = con.prepareStatement("SELECT * FROM REVIEW WHERE movie_ID = ?");
@@ -72,12 +72,17 @@ public class Review_CRUD extends Base_CRUD{
         return reviews;
     }
     public static void main(String[] args) {
-        int movieID = 1;
-        List<ReviewInfo> reviews = getReviewsByMovieID(movieID);
+        int movieID = 5;
+        ArrayList<ReviewInfo> reviews = getReviewsByMovieID(movieID);
         System.out.println("Reviews for movie ID " + movieID + ":");
         for (ReviewInfo review : reviews) {
             System.out.println(review);
         }
+        System.out.println("------------------------------");
+        System.out.println("All Reviews in DB:");
+        ArrayList<ReviewInfo> allReviews = getAllReviews();
+        for (ReviewInfo aReview:allReviews){
+            System.out.println(aReview);
+        }
     }
 }
-
