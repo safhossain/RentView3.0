@@ -12,8 +12,8 @@ import java.sql.Statement;
 
 import com.ryerson.rentviewfrontendservice.Helper.MemberInfo;
 
-public class Member_CRUD extends Base_CRUD {    
-    //sql connection stuff inherited from Base_CRUD
+public class Member_CRUD extends DatabaseConnection_CRUD {    
+    //sql connection stuff inherited from DatabaseConnection_CRUD
     
     /************************************* CRUD OPERATIONS ********************************************/ 
     //overloading create methods

@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Genre_CRUD extends Base_CRUD {
+public class Genre_CRUD extends DatabaseConnection_CRUD {
 
     /************************************* CRUD OPERATIONS ********************************************/ 
     public static void createGenre(String genreType) {

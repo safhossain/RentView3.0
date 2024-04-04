@@ -4,8 +4,10 @@
 <%@page import="com.ryerson.rentviewfrontendservice.Business.RentalManager"%>
 <%@page import="com.ryerson.rentviewfrontendservice.Business.MemberManager"%>
 <%@page import="com.ryerson.rentviewfrontendservice.Business.MemberManager"%>
+<%@page import="com.ryerson.rentviewfrontendservice.Business.Business"%>
 <%@page import="com.ryerson.rentviewfrontendservice.Helper.MemberInfo"%>
 <%@page import="com.ryerson.rentviewfrontendservice.Helper.ReviewInfo"%>
+<%@page import="com.ryerson.rentviewfrontendservice.Helper.ReviewsXML"%>
 <%@page import="com.ryerson.rentviewfrontendservice.Helper.MovieInfo"%>
 <%@page import="com.ryerson.rentviewfrontendservice.Helper.RentalInfo"%>
 <%@page import="javax.servlet.http.Cookie"%>
@@ -97,7 +99,39 @@
             <p>Movie not found.</p>
         <% 
             }
-        %>        
+        %>
+        
+        <% 
+            Business bs = new Business();
+            ReviewsXML result = bs.getReviewsFromReviewService(String.valueOf(movieID), "");            
+            List<ReviewInfo> reviews = result.getReviews();
+            if (reviews != null && !reviews.isEmpty()) {
+        %>
+            <table>
+                <tr>
+                    <th>Rating</th>
+                    <th>Review</th>
+                </tr>
+                <% for (ReviewInfo review : reviews) { %>
+                    <tr>
+                        <td><%= review.getRating() %></td>
+                        <td><%= review.getReviewText() %></td>
+                    </tr>
+                <% } %>
+            </table>
+        <% } %>
+        <form action="SubmitReviewServlet" method="post">
+            <input type="hidden" name="movieID" value="<%= movieID %>">
+            Rating: <select name="rating">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select><br>
+            Review: <textarea name="review" placeholder="Enter your review here..."></textarea><br>
+            <button type="submit">Submit Review</button>
+        </form>
         
         <footer>
             <nav>

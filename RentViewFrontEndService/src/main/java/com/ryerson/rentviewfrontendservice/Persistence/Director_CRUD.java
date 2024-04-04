@@ -11,7 +11,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Director_CRUD extends Base_CRUD {
+public class Director_CRUD extends DatabaseConnection_CRUD {
 
     /************************************* CRUD OPERATIONS ********************************************/ 
     public static void createDirector(String firstName, String lastName) {

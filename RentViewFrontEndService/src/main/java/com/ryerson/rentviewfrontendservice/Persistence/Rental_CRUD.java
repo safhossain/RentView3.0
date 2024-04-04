@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.Date;
 
-public class Rental_CRUD extends Base_CRUD {
+public class Rental_CRUD extends DatabaseConnection_CRUD {
 
         public static int createRental(int memberId, int movieId, Date rentalDate, Date returnDate) {
-        Connection con = Base_CRUD.getCon();
+        Connection con = DatabaseConnection_CRUD.getCon();
         int rentalId = -1;
         try {
             PreparedStatement pstmt = con.prepareStatement(
@@ -39,7 +39,7 @@ public class Rental_CRUD extends Base_CRUD {
     }
 
     public static RentalInfo readRental(int rentalId) {
-        Connection con = Base_CRUD.getCon();
+        Connection con = DatabaseConnection_CRUD.getCon();
         try {
             PreparedStatement pstmt = con.prepareStatement("SELECT * FROM RENTAL WHERE rental_ID = ?");
             pstmt.setInt(1, rentalId);
@@ -61,7 +61,7 @@ public class Rental_CRUD extends Base_CRUD {
     }
 
     public static boolean updateRental(RentalInfo rental) {
-        Connection con = Base_CRUD.getCon();
+        Connection con = DatabaseConnection_CRUD.getCon();
         try {
             PreparedStatement pstmt = con.prepareStatement(
                 "UPDATE RENTAL SET rental_date = ?, return_date = ?, member_ID = ?, movie_ID = ? WHERE rental_ID = ?"
@@ -81,7 +81,7 @@ public class Rental_CRUD extends Base_CRUD {
     }
 
     public static boolean deleteRental(int rentalId) {
-        Connection con = Base_CRUD.getCon();
+        Connection con = DatabaseConnection_CRUD.getCon();
         try {
             PreparedStatement pstmt = con.prepareStatement("DELETE FROM RENTAL WHERE rental_ID = ?");
             pstmt.setInt(1, rentalId);
@@ -95,7 +95,7 @@ public class Rental_CRUD extends Base_CRUD {
     }
 
     public static List<RentalInfo> getAllRentals() {
-        Connection con = Base_CRUD.getCon();
+        Connection con = DatabaseConnection_CRUD.getCon();
         List<RentalInfo> rentals = new ArrayList<>();
         try {
             PreparedStatement pstmt = con.prepareStatement("SELECT * FROM RENTAL");
@@ -117,7 +117,7 @@ public class Rental_CRUD extends Base_CRUD {
     }
     
     public static boolean authenticateRentalByMemberID(int memberID, int movieID) {
-        Connection con = Base_CRUD.getCon();
+        Connection con = DatabaseConnection_CRUD.getCon();
         try {
             PreparedStatement pstmt = con.prepareStatement(
                 "SELECT * FROM RENTAL WHERE member_ID = ? AND movie_ID = ?"

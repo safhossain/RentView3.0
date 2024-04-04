@@ -1,5 +1,15 @@
 package com.ryerson.rentviewfrontendservice.Helper;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Objects;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "review")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class ReviewInfo 
 {
     private int reviewID;
@@ -7,6 +17,10 @@ public class ReviewInfo
     private int movieID;
     private String reviewText;
     private int rating;
+    
+    public ReviewInfo() {
+        // Default constructor needed for JAXB
+    }
 
     public ReviewInfo(int reviewID, int memberID, int movieID, String reviewText, int rating) {
         this.reviewID = reviewID;

@@ -15,7 +15,7 @@ import com.ryerson.rentviewfrontendservice.Helper.GenreInfo;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Movie_CRUD extends Base_CRUD{    
+public class Movie_CRUD extends DatabaseConnection_CRUD{    
     
     /************************************* CRUD OPERATIONS ********************************************/ 
     public static int createMovie(String movieName, int releaseYear, double rentalCost, String movieImagePath, boolean isMovieFeatured) {

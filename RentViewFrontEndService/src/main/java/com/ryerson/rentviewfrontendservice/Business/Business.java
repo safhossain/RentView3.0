@@ -22,20 +22,20 @@ import com.ryerson.rentviewfrontendservice.Helper.ReviewInfo;
 import com.ryerson.rentviewfrontendservice.Helper.ReviewsXML;
 
 public class Business {
-    public static ReviewsXML getServices(String query, String token) throws IOException {
+    public static ReviewsXML getReviewsFromReviewService(String movieID, String token) throws IOException {
 
         Client searchclient = ClientBuilder.newClient();
         
         WebTarget searchwebTarget = searchclient.target("http://localhost:8080/RentViewReviewService/webresources/reviews");
         
-        InputStream is = searchwebTarget.path(query).request(MediaType.APPLICATION_XML).get(InputStream.class);
+        InputStream is = searchwebTarget.path(movieID).request(MediaType.APPLICATION_XML).get(InputStream.class);
         
         String xml = IOUtils.toString(is, "utf-8");
-        ReviewsXML books = reviewXMLtoObjects(xml);        
-        return (books);
+        ReviewsXML reviews = xmlStringToReviewsXML(xml);
+        return (reviews);
     }
     
-    private static ReviewsXML reviewXMLtoObjects(String xml) {
+    private static ReviewsXML xmlStringToReviewsXML(String xml) {
         JAXBContext jaxbContext;
         try {
             jaxbContext = JAXBContext.newInstance(ReviewsXML.class);

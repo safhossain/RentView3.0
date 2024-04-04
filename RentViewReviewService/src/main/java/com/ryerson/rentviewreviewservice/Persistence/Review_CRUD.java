@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Review_CRUD extends Base_CRUD{
+public class Review_CRUD extends DatabaseConnection_CRUD{
     
     public static void createReview(String review, int rating, int memberID, int movieID) {
         Connection con = getCon();

@@ -22,7 +22,7 @@ public class ReviewsXML
         // Default constructor needed for JAXB
     }
 
-    public List<ReviewInfo> getReviews() {
+    public ArrayList<ReviewInfo> getReviews() {
         return reviews;
     }
 

@@ -100,10 +100,10 @@
                         }
                     }
                 %>
-            </div>
+            </div>                        
         </section>
         
-        <footer>
+        <footer>                        
             <nav>
                 <button onclick="window.scrollTo(0, 0);">scroll to top</button>
                 <a href="#terms">Terms & conditions</a>

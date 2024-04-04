@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class Movie_Director_CRUD extends Base_CRUD {
+public class Movie_Director_CRUD extends DatabaseConnection_CRUD {
    
     public static void createMovieDirector(int movieID, int directorID) {
         Connection con = getCon();
