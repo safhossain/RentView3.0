@@ -35,6 +35,19 @@ public class Business {
         return (reviews);
     }
     
+    public static String getReviewsFromReviewService_XMLString(String movieID, String token) throws IOException {
+
+        Client searchclient = ClientBuilder.newClient();
+        
+        WebTarget searchwebTarget = searchclient.target("http://localhost:8080/RentViewReviewService/webresources/reviews");
+        
+        InputStream is = searchwebTarget.path(movieID).request(MediaType.APPLICATION_XML).get(InputStream.class);
+        
+        String xml = IOUtils.toString(is, "utf-8");
+        System.out.println(xml);
+        return xml;
+    }
+    
     private static ReviewsXML xmlStringToReviewsXML(String xml) {
         JAXBContext jaxbContext;
         try {

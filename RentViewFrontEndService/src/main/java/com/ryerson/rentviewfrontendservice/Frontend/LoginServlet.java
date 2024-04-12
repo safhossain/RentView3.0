@@ -30,13 +30,10 @@ public class LoginServlet extends HttpServlet
         MemberInfo memberInfo = MemberManager.authenticateMember(email, password);
         
         if (memberInfo != null) {
-            //HttpSession session = request.getSession();
-            //session.setAttribute("memberInfo", memberInfo);
-            
             try{
                 // Create JWT token
                 Authenticate auth = new Authenticate();
-                String token = auth.createJWT("RentViewFrontEndService", email, 100000); // Adjust issuer and ttlMillis as needed
+                String token = auth.createJWT("RentViewFrontEndService", email, 100000);
 
                 // Set JWT token as a cookie
                 Cookie cookie = new Cookie("login_token", token);

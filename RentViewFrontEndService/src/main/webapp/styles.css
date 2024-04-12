@@ -79,3 +79,84 @@ footer nav {
 #featured .movie-poster:hover:hover {
     transform: scale(1.1);
 }
+
+/* General styling for movie details page */
+.movie-details-header {
+    font-size: 24px;
+    color: #333;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.movie-img {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+    height: auto;
+}
+
+.movie-info {
+    font-size: 18px;
+    color: #666;
+    margin: 5px 0;
+}
+
+/* Styling for the reviews table */
+.reviews-table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+.reviews-table th, .reviews-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.reviews-table th {
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+/* Hover effect for rows */
+.reviews-table tr:nth-child(even) {background-color: #f2f2f2;}
+.reviews-table tr:hover {background-color: #ddd;}
+
+/* Styling for form inputs and buttons in movie.jsp */
+.movie-form input[type="submit"], .movie-form button {
+    background: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.movie-form input[type="submit"]:hover, .movie-form button:hover {
+    background-color: #45a049;
+}
+
+.movie-form textarea {
+    width: 80%;
+    height: 100px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.movie-form select {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}

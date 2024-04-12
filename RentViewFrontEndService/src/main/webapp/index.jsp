@@ -1,3 +1,9 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="com.ryerson.rentviewfrontendservice.Helper.MemberInfo"%>
+<%@page import="com.ryerson.rentviewfrontendservice.Helper.MovieInfo"%>
+<%@page import="com.ryerson.rentviewfrontendservice.Business.MemberManager"%>
+<%@page import="java.util.List"%>
+
 <% 
     if (request.getAttribute("movies") == null) {
         response.sendRedirect("IndexServlet");
@@ -11,8 +17,7 @@
     Cookie[] cookies = request.getCookies();
     if (cookies != null) {
         for (Cookie cookie : cookies) {
-            if ("login_token".equals(cookie.getName())) {
-                // Assuming you have a method in MemberManager to verify the token and get MemberInfo
+            if ("login_token".equals(cookie.getName())) {                
                 memberInfo = MemberManager.verifyTokenAndGetMemberInfo(cookie.getValue());
                 if (memberInfo != null) {
                     isAuthenticated = true;
@@ -23,12 +28,6 @@
     }
 %>
 
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="com.ryerson.rentviewfrontendservice.Helper.MemberInfo"%>
-<%@page import="com.ryerson.rentviewfrontendservice.Helper.MovieInfo"%>
-<%@page import="com.ryerson.rentviewfrontendservice.Business.MemberManager"%>
-<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
     <head>

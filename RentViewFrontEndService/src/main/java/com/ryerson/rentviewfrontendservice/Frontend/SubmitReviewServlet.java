@@ -17,10 +17,7 @@ import com.ryerson.rentviewfrontendservice.Business.MemberManager;
 import com.ryerson.rentviewfrontendservice.Helper.MemberInfo;
 
 public class SubmitReviewServlet extends HttpServlet 
-{    
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {        
-    }
-
+{       
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {        
     }

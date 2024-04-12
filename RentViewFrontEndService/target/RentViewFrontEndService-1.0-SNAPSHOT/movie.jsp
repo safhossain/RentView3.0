@@ -5,6 +5,7 @@
 <%@page import="com.ryerson.rentviewfrontendservice.Business.MemberManager"%>
 <%@page import="com.ryerson.rentviewfrontendservice.Business.MemberManager"%>
 <%@page import="com.ryerson.rentviewfrontendservice.Business.Business"%>
+<%@page import="com.ryerson.rentviewfrontendservice.Business.XMLParser"%>
 <%@page import="com.ryerson.rentviewfrontendservice.Helper.MemberInfo"%>
 <%@page import="com.ryerson.rentviewfrontendservice.Helper.ReviewInfo"%>
 <%@page import="com.ryerson.rentviewfrontendservice.Helper.ReviewsXML"%>
@@ -64,13 +65,13 @@
         <% 
             int movieID = Integer.parseInt(request.getParameter("movieID"));
             MovieInfo movie = MovieManagement.readMovie(movieID);            
-                       
+            
             if (movie != null) {
         %>
-            <h1><%= movie.getMovieName() %></h1>
-            <img src="<%= request.getContextPath() + movie.getMovieImagePath() %>" alt="<%= movie.getMovieName() %>" width="270" height="400">
-            <p>Release Year: <%= movie.getReleaseYear() %></p>
-            <p>Rental Cost: $<%= movie.getRentalCost() %></p>
+            <h1 class="movie-details-header"><%= movie.getMovieName() %></h1>
+            <img src="<%= request.getContextPath() + movie.getMovieImagePath() %>" alt="<%= movie.getMovieName() %>" class="movie-img" width="270" height="400">
+            <p class="movie-info">Release Year: <%= movie.getReleaseYear() %></p>
+            <p class="movie-info">Rental Cost: $<%= movie.getRentalCost() %></p>
             
             <% if (session.getAttribute("rentalStatus") != null && session.getAttribute("rentalStatus").equals("Success")) { %>
                 <p style="color: green;">Rental successful!</p>
@@ -102,12 +103,30 @@
         %>
         
         <% 
+            // Using XMLParser provided by prof (doesn't look good tbh)
+//            Business bs = new Business();
+//            ReviewsXML result = bs.getReviewsFromReviewService(String.valueOf(movieID), "");
+//            List<ReviewInfo> reviews = result.getReviews();
+//            
+//            String resultXMLString = bs.getReviewsFromReviewService_XMLString(String.valueOf(movieID), "");
+//            XMLParser xmlparser = new XMLParser();
+//            String resultsHTMLTable = xmlparser.ConvertXmlToHtmlTable(resultXMLString);            
+//            request.setAttribute("resultsHTMLTable", resultsHTMLTable);
+//            
+//            if (reviews != null && !reviews.isEmpty()) {
+//                request.getAttribute(resultsHTMLTable);
+//                String htmlTable = (String) request.getAttribute("resultsHTMLTable");  // Retrieving the attribute correctly
+//                out.print(htmlTable);  // This line will output your HTML table to the page
+//            }        
+        %>
+        
+        <% 
             Business bs = new Business();
             ReviewsXML result = bs.getReviewsFromReviewService(String.valueOf(movieID), "");            
             List<ReviewInfo> reviews = result.getReviews();
             if (reviews != null && !reviews.isEmpty()) {
         %>
-            <table>
+            <table class="reviews-table">
                 <tr>
                     <th>Rating</th>
                     <th>Review</th>
@@ -120,7 +139,9 @@
                 <% } %>
             </table>
         <% } %>
-        <form action="SubmitReviewServlet" method="post">
+        
+        
+        <form action="SubmitReviewServlet" method="post" class="movie-form">
             <input type="hidden" name="movieID" value="<%= movieID %>">
             Rating: <select name="rating">
                 <option value="1">1</option>
@@ -136,7 +157,9 @@
         <footer>
             <nav>
                 <button onclick="window.scrollTo(0, 0);">scroll to top</button>
-                <a href="#terms">Terms & conditions</a>
+                <form action="index.jsp">
+                        <button type="Terms & conditions">Home</button>
+                </form>                
                 <a href="#about">About us</a>
                 <a href="#support">Support</a>
             </nav>

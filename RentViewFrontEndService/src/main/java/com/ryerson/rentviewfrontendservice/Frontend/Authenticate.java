@@ -28,7 +28,7 @@ public class Authenticate
 
     public Authenticate() {
         signatureAlgorithm = SignatureAlgorithm.HS256;        
-        secretString = Encoders.BASE64.encode("mysecuresecurecode123456789012345678901234".getBytes());
+        secretString = Encoders.BASE64.encode("nw7CyuGJfyDTyB9!xnVGztz5GThUe9p!7wT5T6aBDhCtdfM".getBytes());
     }
 
     public String createJWT(String issuer, String subject, long ttlMillis) {
