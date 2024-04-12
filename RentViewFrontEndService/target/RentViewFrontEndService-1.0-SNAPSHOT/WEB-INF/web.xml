@@ -32,6 +32,10 @@
         <servlet-name>SubmitReviewServlet</servlet-name>
         <servlet-class>com.ryerson.rentviewfrontendservice.Frontend.SubmitReviewServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.ryerson.rentviewfrontendservice.Frontend.RegisterServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>FrontEndServlet</servlet-name>
         <url-pattern>/FrontEndServlet</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>SubmitReviewServlet</servlet-name>
         <url-pattern>/SubmitReviewServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/RegisterServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

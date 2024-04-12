@@ -61,6 +61,9 @@
                     <form action="login.jsp">
                         <button type="submit">Login</button>
                     </form>
+                    <form action="register.jsp">
+                        <button type="submit">Register</button>
+                    </form>
                 <% } %>
             </nav>
         </header>

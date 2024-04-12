@@ -1,5 +1,6 @@
 /home/student/NetBeansProjects/Lab4/RentViewFrontEndService/src/main/java/com/ryerson/rentviewfrontendservice/Frontend/Authenticate.java
 /home/student/NetBeansProjects/Lab4/RentViewFrontEndService/src/main/java/com/ryerson/rentviewfrontendservice/Business/XMLParser.java
+/home/student/NetBeansProjects/Lab4/RentViewFrontEndService/src/main/java/com/ryerson/rentviewfrontendservice/Frontend/RegisterServlet.java
 /home/student/NetBeansProjects/Lab4/RentViewFrontEndService/src/main/java/com/ryerson/rentviewfrontendservice/Persistence/Movie_CRUD.java
 /home/student/NetBeansProjects/Lab4/RentViewFrontEndService/src/main/java/com/ryerson/rentviewfrontendservice/Frontend/FrontEndServlet.java
 /home/student/NetBeansProjects/Lab4/RentViewFrontEndService/src/main/java/com/ryerson/rentviewfrontendservice/Helper/DirectorInfo.java

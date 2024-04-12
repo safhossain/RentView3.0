@@ -2,6 +2,7 @@ com/ryerson/rentviewfrontendservice/Frontend/IndexServlet.class
 com/ryerson/rentviewfrontendservice/Frontend/SubmitReviewServlet.class
 com/ryerson/rentviewfrontendservice/Persistence/Genre_CRUD.class
 com/ryerson/rentviewfrontendservice/Frontend/UserManagementServlet.class
+com/ryerson/rentviewfrontendservice/Frontend/RegisterServlet.class
 com/ryerson/rentviewfrontendservice/Persistence/Rental_CRUD.class
 com/ryerson/rentviewfrontendservice/Persistence/Movie_Director_CRUD.class
 com/ryerson/rentviewfrontendservice/Helper/ReviewsXML.class

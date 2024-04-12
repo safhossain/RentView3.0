@@ -16,6 +16,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
 import javax.xml.bind.JAXBContext;
@@ -24,8 +25,10 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import com.ryerson.rentviewreviewservice.Business.ReviewManager;
+import com.ryerson.rentviewreviewservice.Business.MemberManager;
 import com.ryerson.rentviewreviewservice.Helper.ReviewsXML;
 import com.ryerson.rentviewreviewservice.Helper.ReviewInfo;
+import com.ryerson.rentviewreviewservice.Helper.MemberInfo;
 
 @Path("reviews")
 public class ReviewResource 
@@ -75,6 +78,28 @@ public class ReviewResource
         } catch (JAXBException e) {
             e.printStackTrace();
             return Response.status(Response.Status.BAD_REQUEST).entity("Invalid XML format").build();
+        }
+    }    
+    
+    @POST
+    @Path("/members")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response create(
+            @QueryParam("email") String email,
+            @QueryParam("password") String password,
+            @QueryParam("firstName") String firstName,
+            @QueryParam("lastName") String lastName,
+            @QueryParam("dob") String dob,
+            @QueryParam("memberType") String memberType,
+            @QueryParam("lastFourDigits") String lastFourDigits,
+            @QueryParam("cardType") String cardType,
+            @QueryParam("expirationDate") String expirationDate) {
+        try {
+            System.out.println("Found in /members: " + email);
+            MemberManager.createMember(email, password, firstName, lastName, dob, memberType, lastFourDigits, cardType, expirationDate);
+            return Response.status(Response.Status.OK).build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error updating member").build();
         }
     }
 }

@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.ryerson.rentviewfrontendservice.Helper.MemberInfo;
+import com.ryerson.rentviewfrontendservice.Helper.EncryptionUtil;
 
 public class Member_CRUD extends DatabaseConnection_CRUD {    
     //sql connection stuff inherited from DatabaseConnection_CRUD
@@ -20,12 +21,12 @@ public class Member_CRUD extends DatabaseConnection_CRUD {
     public static void createMember(String email, String password, String firstName, String lastName, String dob, String memberType) {
         createMember(email, password, firstName, lastName, dob, memberType, null, null, null);
     }    
-    public static void createMember(String email, String password, String firstName, String lastName, String dob, String memberType, String lastFourDigits, String cardType, String expirationDate) {
+    public static void createMember(String email, String password, String firstName, String lastName, String dob, String memberType, String lastFourDigits, String cardType, String expirationDate) {        
         Connection con = getCon();
         try {
             PreparedStatement pstmt = con.prepareStatement("INSERT INTO MEMBER (email_address, hashed_password, first_name, last_name, date_of_birth, member_type, last_four_digits, card_type, expiration_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
             pstmt.setString(1, email);
-            pstmt.setString(2, password);
+            pstmt.setString(2, password); // already hashed at this point in MemberManager.java
             pstmt.setString(3, firstName);
             pstmt.setString(4, lastName);
             pstmt.setString(5, dob);
