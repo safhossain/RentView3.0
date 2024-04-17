@@ -17,6 +17,7 @@
 /home/student/NetBeansProjects/Lab4/RentViewFrontEndService/src/main/java/com/ryerson/rentviewfrontendservice/Frontend/LoginServlet.java
 /home/student/NetBeansProjects/Lab4/RentViewFrontEndService/src/main/java/com/ryerson/rentviewfrontendservice/Frontend/ManagerServlet.java
 /home/student/NetBeansProjects/Lab4/RentViewFrontEndService/src/main/java/com/ryerson/rentviewfrontendservice/Helper/ReviewInfo.java
+/home/student/NetBeansProjects/Lab4/RentViewFrontEndService/src/main/java/com/ryerson/rentviewfrontendservice/Business/Messaging.java
 /home/student/NetBeansProjects/Lab4/RentViewFrontEndService/src/main/java/com/ryerson/rentviewfrontendservice/Persistence/Movie_Genre_CRUD.java
 /home/student/NetBeansProjects/Lab4/RentViewFrontEndService/src/main/java/com/ryerson/rentviewfrontendservice/Helper/ReviewsXML.java
 /home/student/NetBeansProjects/Lab4/RentViewFrontEndService/src/main/java/com/ryerson/rentviewfrontendservice/Frontend/RentMovieServlet.java

@@ -18,10 +18,12 @@ public class Member_CRUD extends DatabaseConnection_CRUD {
     
     /************************************* CRUD OPERATIONS ********************************************/ 
     //overloading create methods
-    public static void createMember(String email, String password, String firstName, String lastName, String dob, String memberType) {
+    public static void createMember(String email, String password, String firstName, String lastName, String dob, String memberType)
+        throws ClassNotFoundException, SQLException {
         createMember(email, password, firstName, lastName, dob, memberType, null, null, null);
     }    
-    public static void createMember(String email, String password, String firstName, String lastName, String dob, String memberType, String lastFourDigits, String cardType, String expirationDate) {        
+    public static void createMember(String email, String password, String firstName, String lastName, String dob, String memberType, String lastFourDigits, String cardType, String expirationDate)
+        throws ClassNotFoundException, SQLException {        
         Connection con = getCon();
         try {
             PreparedStatement pstmt = con.prepareStatement("INSERT INTO MEMBER (email_address, hashed_password, first_name, last_name, date_of_birth, member_type, last_four_digits, card_type, expiration_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");

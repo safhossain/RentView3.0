@@ -47,60 +47,12 @@
             <artifactId>jersey-servlet</artifactId>
             <version>1.19</version>
         </dependency>
-        
-<!--        <dependency>
-            <groupId>org.core4j</groupId>
-            <artifactId>core4j</artifactId>
-            <version>0.6</version>
-            <type>jar</type>
+        <!-- https://mvnrepository.com/artifact/io.kubemq.sdk/kubemq-sdk-Java -->
+        <dependency>
+            <groupId>io.kubemq.sdk</groupId>
+            <artifactId>kubemq-sdk-Java</artifactId>
+            <version>1.0.3</version>
         </dependency>
-        <dependency>
-            <groupId>org.w3c</groupId>
-            <artifactId>dom</artifactId>
-            <version>2.3.0-jaxb-1.0.6</version>
-        </dependency>        
-        <dependency>
-            <groupId>org.glassfish.jersey.core</groupId>
-            <artifactId>jersey-client</artifactId>
-            <version>2.25.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-json-jackson</artifactId>
-            <version>2.25.1</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.6</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.activation</groupId>
-            <artifactId>activation</artifactId>
-            <version>1.1.1</version>
-        </dependency>
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-api</artifactId>
-            <version>0.11.2</version>
-        </dependency>
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-impl</artifactId>
-            <version>0.11.2</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-gson</artifactId>
-            <version>0.11.2</version>
-            <scope>compile</scope>
-        </dependency>        
-        <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-core</artifactId>
-            <version>2.3.0</version>
-        </dependency>-->
     </dependencies>
 
     <build>

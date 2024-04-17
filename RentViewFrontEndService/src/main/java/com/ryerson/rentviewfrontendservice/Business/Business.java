@@ -26,7 +26,8 @@ public class Business {
 
         Client searchclient = ClientBuilder.newClient();
         
-        WebTarget searchwebTarget = searchclient.target("http://localhost:8080/RentViewReviewService/webresources/reviews");
+        String reviewServiceAddr = System.getenv("reviewServiceAddr");        
+        WebTarget searchwebTarget = searchclient.target("http://" + reviewServiceAddr + "/RentViewReviewService/webresources/reviews");
         
         InputStream is = searchwebTarget.path(movieID).request(MediaType.APPLICATION_XML).get(InputStream.class);
         
@@ -39,7 +40,8 @@ public class Business {
 
         Client searchclient = ClientBuilder.newClient();
         
-        WebTarget searchwebTarget = searchclient.target("http://localhost:8080/RentViewReviewService/webresources/reviews");
+        String reviewServiceAddr = System.getenv("reviewServiceAddr");
+        WebTarget searchwebTarget = searchclient.target("http://" + reviewServiceAddr + "/RentViewReviewService/webresources/reviews");
         
         InputStream is = searchwebTarget.path(movieID).request(MediaType.APPLICATION_XML).get(InputStream.class);
         

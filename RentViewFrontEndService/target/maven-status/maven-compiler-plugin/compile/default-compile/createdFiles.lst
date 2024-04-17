@@ -21,6 +21,7 @@ com/ryerson/rentviewfrontendservice/Frontend/ManagerServlet.class
 com/ryerson/rentviewfrontendservice/Helper/MemberInfo.class
 com/ryerson/rentviewfrontendservice/Frontend/MovieManagementServlet.class
 com/ryerson/rentviewfrontendservice/Helper/MovieInfo.class
+com/ryerson/rentviewfrontendservice/Business/Messaging.class
 com/ryerson/rentviewfrontendservice/Frontend/LoginServlet.class
 com/ryerson/rentviewfrontendservice/Frontend/Authenticate.class
 com/ryerson/rentviewfrontendservice/Helper/EncryptionUtil.class

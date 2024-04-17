@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Map.Entry;
 import java.util.logging.Logger;
 import java.util.logging.Level;
+import java.sql.SQLException;
 
 import com.ryerson.rentviewreviewservice.Helper.EncryptionUtil;
 import com.ryerson.rentviewreviewservice.Helper.MemberInfo;
@@ -31,11 +32,12 @@ public class MemberManager
         return Member_CRUD.readAllMembers();
     }
     
-    public static void createMember(String email, String password, String firstName, String lastName, String dob, String memberType){
+    public static void createMember(String email, String password, String firstName, String lastName, String dob, String memberType) throws ClassNotFoundException, SQLException {
         Member_CRUD.createMember(email, password, firstName, lastName, dob, memberType);
     }
     
-    public static void createMember(String email, String password, String firstName, String lastName, String dob, String memberType, String lastFourDigits, String cardType, String expirationDate) {        
+    public static void createMember(String email, String password, String firstName, String lastName, String dob, String memberType, String lastFourDigits, String cardType, String expirationDate) 
+        throws ClassNotFoundException, SQLException {
         Member_CRUD.createMember(email, password, firstName, lastName, dob, memberType, lastFourDigits, cardType, expirationDate);
     }
     

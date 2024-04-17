@@ -7,8 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import io.kubemq.sdk.basic.ServerAddressNotSuppliedException;
+import java.sql.SQLException;
 
 public class RegisterServlet extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -30,12 +33,16 @@ public class RegisterServlet extends HttpServlet {
             expirationDate = expirationYear + "-" + expirationMonth + "-01";
         }
         
-        if (!cardType.isEmpty() && !lastFourDigits.isEmpty() && !expirationDate.isEmpty()) {
-            MemberManager.createMember(email, password, firstName, lastName, dob, memberType, lastFourDigits, cardType, expirationDate);
-        } else {
-            MemberManager.createMember(email, password, firstName, lastName, dob, memberType);
+        try {
+            if (!cardType.isEmpty() && !lastFourDigits.isEmpty() && !expirationDate.isEmpty()) {
+                MemberManager.createMember(email, password, firstName, lastName, dob, memberType, lastFourDigits, cardType, expirationDate);
+            } else {
+                MemberManager.createMember(email, password, firstName, lastName, dob, memberType);
+            }
+            response.sendRedirect("login.jsp");
+        } catch (ClassNotFoundException | SQLException | ServerAddressNotSuppliedException | InterruptedException e) {            
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "An error occurred while processing your registration.");            
+            e.printStackTrace();
         }
-        
-        response.sendRedirect("login.jsp");
     }
 }

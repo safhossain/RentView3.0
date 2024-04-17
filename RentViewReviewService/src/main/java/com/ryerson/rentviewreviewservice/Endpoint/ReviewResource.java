@@ -80,26 +80,26 @@ public class ReviewResource
             return Response.status(Response.Status.BAD_REQUEST).entity("Invalid XML format").build();
         }
     }    
-    
-    @POST
-    @Path("/members")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response create(
-            @QueryParam("email") String email,
-            @QueryParam("password") String password,
-            @QueryParam("firstName") String firstName,
-            @QueryParam("lastName") String lastName,
-            @QueryParam("dob") String dob,
-            @QueryParam("memberType") String memberType,
-            @QueryParam("lastFourDigits") String lastFourDigits,
-            @QueryParam("cardType") String cardType,
-            @QueryParam("expirationDate") String expirationDate) {
-        try {
-            System.out.println("Found in /members: " + email);
-            MemberManager.createMember(email, password, firstName, lastName, dob, memberType, lastFourDigits, cardType, expirationDate);
-            return Response.status(Response.Status.OK).build();
-        } catch (Exception e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error updating member").build();
-        }
-    }
+    // No longer using this API endpoint for syncing the MEMBER entity syncing; replaced with KubeMQ
+//    @POST
+//    @Path("/members")
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    public Response create(
+//            @QueryParam("email") String email,
+//            @QueryParam("password") String password,
+//            @QueryParam("firstName") String firstName,
+//            @QueryParam("lastName") String lastName,
+//            @QueryParam("dob") String dob,
+//            @QueryParam("memberType") String memberType,
+//            @QueryParam("lastFourDigits") String lastFourDigits,
+//            @QueryParam("cardType") String cardType,
+//            @QueryParam("expirationDate") String expirationDate) {
+//        try {
+//            System.out.println("Found in /members: " + email);
+//            MemberManager.createMember(email, password, firstName, lastName, dob, memberType, lastFourDigits, cardType, expirationDate);
+//            return Response.status(Response.Status.OK).build();
+//        } catch (Exception e) {
+//            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error updating member").build();
+//        }
+//    }
 }
