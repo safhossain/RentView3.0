@@ -55,6 +55,9 @@ public class SubmitReviewServlet extends HttpServlet
             
             Client searchClient = ClientBuilder.newClient();
             
+//            Response postResponse = searchClient.target("http://localhost:8080/RentViewReviewService/webresources/reviews")
+//                                     .request(MediaType.APPLICATION_XML)
+//                                     .post(Entity.entity(xml, MediaType.APPLICATION_XML));            
             String reviewServiceAddr = System.getenv("reviewServiceAddr");
             Response postResponse = searchClient.target("http://" + reviewServiceAddr + "/RentViewReviewService/webresources/reviews")
                                      .request(MediaType.APPLICATION_XML)

@@ -9,7 +9,8 @@ public abstract class DatabaseConnection_CRUD {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String connection = System.getenv("DB_URL");
-            con = DriverManager.getConnection("jdbc:mysql://" + connection + "/RENTVIEWREVIEWSERVICE?allowPublicKeyRetrieval=true&useSSL=false", "root", "student");
+            //con = DriverManager.getConnection("jdbc:mysql://localhost:3306/RENTVIEWREVIEWSERVICE?autoReconnect=true&useSSL=false", "root", "student");
+            con = DriverManager.getConnection("jdbc:mysql://" + connection + "/RENTVIEWREVIEWSERVICE?allowPublicKeyRetrieval=true&useSSL=false", "root", "student");            
             System.out.println("Connection Good");
         } catch (Exception e) {
             System.out.println("CONNECTION failed: " + e);

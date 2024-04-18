@@ -112,7 +112,7 @@ CREATE TABLE `REVIEW` (
 
 LOCK TABLES `REVIEW` WRITE;
 /*!40000 ALTER TABLE `REVIEW` DISABLE KEYS */;
-INSERT INTO `REVIEW` VALUES (1,'Great movie!',5,3,1),(2,'Loved it!',4,4,2),(3,'Very entertaining',4,5,3),(4,'A classic',5,6,4),(5,'Heartwarming story',4,7,5),(6,'I like turtles',5,4,5),(7,'Dune better',3,3,1);
+INSERT INTO `REVIEW` VALUES (1,'Great movie!',5,3,1),(2,'Loved it!',4,4,2),(3,'Very entertaining',4,5,3),(4,'A classic',5,6,4),(5,'Heartwarming story',4,7,5),(6,'I like turtles',5,4,5),(7,'timotheee chalamettt',1,3,3);
 /*!40000 ALTER TABLE `REVIEW` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -125,4 +125,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-17  2:40:01
+-- Dump completed on 2024-04-17 18:05:26

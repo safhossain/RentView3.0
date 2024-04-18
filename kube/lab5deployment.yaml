@@ -1,0 +1,103 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reviewservicedb
+spec:  
+  selector:
+    matchLabels:
+      app: reviewservicedb
+  template:
+    metadata:
+      labels:
+        app: reviewservicedb
+    spec:
+      containers:
+      - name: reviewservicedb
+        image: safhossain/coe692:reviewserviceDB
+        ports:
+          - containerPort: 3306
+        volumeMounts:
+          - name: reviewservice-storage
+            mountPath: /var/lib/mysql
+      volumes:
+      - name: reviewservice-storage
+        persistentVolumeClaim:
+          claimName: reviewservice-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontendservicedb
+spec:  
+  selector:
+    matchLabels:
+      app: frontendservicedb
+  template:
+    metadata:
+      labels:
+        app: frontendservicedb
+    spec:
+      containers:
+      - name: frontendservicedb
+        image: safhossain/coe692:frontendDB
+        ports:
+          - containerPort: 3306
+        volumeMounts:
+          - name: frontend-storage
+            mountPath: /var/lib/mysql
+      volumes:
+      - name: frontend-storage
+        persistentVolumeClaim:
+          claimName: frontend-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reviewservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reviewservice
+  template:
+    metadata:
+      labels:
+        app: reviewservice
+    spec:
+      containers:
+      - name: reviewservice
+        image: safhossain/coe692:reviewservice
+        ports:
+          - containerPort: 8080
+        env:
+        - name: DB_URL
+          value: reviewservicedb:3306
+        - name: kubeMQAddress
+          value: 10.70.62.170:50000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: safhossain/coe692:frontend
+        ports:
+          - containerPort: 8080
+        env:
+        - name: DB_URL
+          value: "frontendservicedb:3306"
+        - name: reviewServiceAddr
+          value: reviewservice:80
+        - name: kubeMQAddress
+          value: 10.70.62.170:50000

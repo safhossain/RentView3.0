@@ -8,6 +8,7 @@ public abstract class DatabaseConnection_CRUD {
         Connection con = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
+            //con = DriverManager.getConnection("jdbc:mysql://localhost:3306/RENTVIEWFRONTENDSERVICE?autoReconnect=true&useSSL=false", "root", "student");
             String connection = System.getenv("DB_URL");
             con = DriverManager.getConnection("jdbc:mysql://" + connection + "/RENTVIEWFRONTENDSERVICE?allowPublicKeyRetrieval=true&useSSL=false", "root", "student");
             System.out.println("Connection Good");
